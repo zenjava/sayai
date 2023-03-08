@@ -9,7 +9,8 @@ sayai start -key [yourkeys]
 ```
 
 ```shell
-  -key, --apiKey <string>      openAI的密钥
+  -k, --apiKey <string>        openAI api key
+  -s, --saveKey                save key in cwd
   -m, --model <string>         Select chatGPT model  (default: "text-davinci-003")
   -max, --max_tokens <number>  Return max characters (default: 256)
   --temperature <number>       temperature (default: 0.7)

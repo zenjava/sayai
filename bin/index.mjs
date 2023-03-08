@@ -8,8 +8,8 @@ program.name("sayai").description("say to chatGPT").version("1.0.0");
 program
   .command("start")
   .description("Start completion")
-  .option("-k, --apiKey <string>", "openAI的密钥")
-  .option("-s, --saveKey", "openAI的密钥")
+  .option("-k, --apiKey <string>", "openAI api key")
+  .option("-s, --saveKey", "save key in cwd")
   .option("-m, --model <string>", "Select chatGPT model ", "text-davinci-003")
   .option("-max, --max_tokens <number>", "Return max characters", 256)
   .option("--temperature <number>", "temperature", 0.7)
