@@ -15,11 +15,11 @@ function createSay({ apiKey, model, max_tokens, temperature }) {
     const completion = await openai.createCompletion({
       model,
       prompt: text,
-      temperature,
-      top_p: 1,
+      temperature: Number(temperature),
+      top_p: Number(1),
       frequency_penalty: 0,
       presence_penalty: 0,
-      max_tokens,
+      max_tokens: Number(max_tokens),
     });
     return completion.data.choices.map(({ text }) => text).join("");
   };

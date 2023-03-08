@@ -10,6 +10,7 @@ program
   .description("Start completion")
   .option("-k, --apiKey <string>", "openAI api key")
   .option("-s, --saveKey", "save key in cwd")
+  .option("-t, --top_p", "top_p", 1)
   .option("-m, --model <string>", "Select chatGPT model ", "text-davinci-003")
   .option("-max, --max_tokens <number>", "Return max characters", 256)
   .option("--temperature <number>", "temperature", 0.7)
