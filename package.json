@@ -1,6 +1,6 @@
 {
   "name": "sayai",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "index.mjs",
   "bin": "bin/index.mjs",
