@@ -1,9 +1,10 @@
 {
   "name": "sayai",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "index.mjs",
   "bin": "bin/index.mjs",
+  "keywords":["openai", "chatgpt", "ai"],
   "dependencies": {
     "chalk": "^5.2.0",
     "commander": "^10.0.0",
