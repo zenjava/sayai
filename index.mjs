@@ -31,7 +31,7 @@ export const createTalk = (option) => {
   return async function startTalk() {
     const file = join(process.cwd(), `${getTimeString()}.log`);
     const sayToAI = createSay(option);
-    console.info(chalk.blue(`开始聊天`));
+    console.info(chalk.blue(`Start completion`));
     async function appendMsg(record) {
       const time = getTimeString();
 
@@ -48,10 +48,10 @@ export const createTalk = (option) => {
         console.info(chalk.green("ai:"), chalk.blue(ai));
         await appendMsg({ from: "ai", text: ai });
       } catch (e) {
-        console.error(chalk.red("Open AI接入异常"));
+        console.error(chalk.red("Open AI access error"));
         process.exit(-1);
       }
     }
-    console.info(chalk.blue(`结束聊天`));
+    console.info(chalk.blue(`End completion`));
   };
 };
