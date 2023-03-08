@@ -56,16 +56,19 @@ export const createTalk = (option) => {
       await appendFile(file, `${from} ${time}\n${text.trim()}\n`);
     }
 
+    const context = [];
     await writeFile(file, ``);
     while (true) {
       const { your } = await prompt({ type: "input", name: "your" });
+      context.push(your);
       await appendMsg({ from: "me", text: your });
       try {
-        const ai = await sayToAI(your);
+        const ai = await sayToAI(context.join("\n\n"));
+        context.push(ai);
         console.info(chalk.green("ai:"), chalk.blue(ai));
         await appendMsg({ from: "ai", text: ai });
       } catch (e) {
-        console.error(chalk.red("Open AI access error"));
+        console.error(chalk.red("Open AI access error"), e.message);
         process.exit(-1);
       }
     }
