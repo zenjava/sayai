@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
 import { Configuration, OpenAIApi } from "openai";
-import { writeFile, appendFile } from "node:fs/promises";
+import { writeFile, readFile, appendFile } from "node:fs/promises";
 import { join } from "path";
 import chalk from "chalk";
 const prompt = inquirer.createPromptModule();
@@ -28,8 +28,24 @@ const getTimeString = () => moment().format("YYYY-MM-D_HH_mm_ss");
 
 export const createTalk = (option) => {
   // ''
+
+  const getCwdPath = (file) => {
+    return join(process.cwd(), file);
+  };
+
   return async function startTalk() {
-    const file = join(process.cwd(), `${getTimeString()}.log`);
+    const file = getCwdPath(`${getTimeString()}.log`);
+
+    let { saveKey, apiKey } = option;
+    if (saveKey && apiKey) {
+      await writeFile(getCwdPath("chatKey.key"), apiKey);
+    }
+    if (!apiKey) {
+      apiKey = await readFile(getCwdPath("chatKey.key"), apiKey);
+    }
+    if (!apiKey) {
+      console.error(chalk.red("Apikey is required"));
+    }
     const sayToAI = createSay(option);
     console.info(chalk.blue(`Start completion`));
     async function appendMsg(record) {
