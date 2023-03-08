@@ -1,6 +1,7 @@
 import inquirer from "inquirer";
 import { Configuration, OpenAIApi } from "openai";
-import { writeFile, readFile, appendFile } from "node:fs/promises";
+import { writeFile, appendFile } from "node:fs/promises";
+import { readFileSync } from "node:fs";
 import { join } from "path";
 import chalk from "chalk";
 const prompt = inquirer.createPromptModule();
@@ -41,16 +42,16 @@ export const createTalk = (option) => {
       await writeFile(getCwdPath("chatKey.key"), apiKey);
     }
     if (!apiKey) {
-      apiKey = await readFile(getCwdPath("chatKey.key"), apiKey);
+      apiKey = readFileSync(getCwdPath("chatKey.key")).toString();
+      console.info(chalk.green("read local apikey"), apiKey);
     }
     if (!apiKey) {
       console.error(chalk.red("Apikey is required"));
     }
-    const sayToAI = createSay(option);
+    const sayToAI = createSay({ ...option, apiKey });
     console.info(chalk.blue(`Start completion`));
     async function appendMsg(record) {
       const time = getTimeString();
-
       const { text, from } = record;
       await appendFile(file, `${from} ${time}\n${text.trim()}\n`);
     }

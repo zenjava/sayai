@@ -14,7 +14,7 @@ program
   .option("-max, --max_tokens <number>", "Return max characters", 256)
   .option("--temperature <number>", "temperature", 0.7)
   .action(async (options) => {
-      await createTalk(options)();
+    await createTalk(options)();
   });
 
 program.parse();
