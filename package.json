@@ -1,0 +1,28 @@
+{
+  "name": "sayai",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.mjs",
+  "bin": "bin/index.mjs",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "commander": "^10.0.0",
+    "fs-extra": "^11.1.0",
+    "inquirer": "^9.1.4",
+    "moment": "^2.29.4",
+    "openai": "^3.2.1"
+  },
+  "files": [
+    "bin",
+    "index.mjs",
+    "package.json"
+  ],
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://github.com/zenjava/sayai.git",
+  "repository": "https://github.com/zenjava/sayai.git",
+  "author": "",
+  "license": "MIT"
+}
